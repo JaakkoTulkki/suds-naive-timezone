@@ -642,10 +642,10 @@ class SoapClient:
             else:
                 result = self.succeeded(binding, reply.message)
         except TransportError, e:
-            if e.httpcode in (202,204):
+            if str(e.httpcode).startswith("2"):
                 result = None
             else:
-                log.error(self.last_sent())
+                log.error(self.last_sent() + "\nHTTP CODE: " + str(e.httpcode))
                 result = self.failed(binding, e)
         return result
     
