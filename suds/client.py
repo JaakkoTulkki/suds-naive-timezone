@@ -645,7 +645,7 @@ class SoapClient:
             if str(e.httpcode).startswith("2"):
                 result = None
             else:
-                log.error(self.last_sent() + "\nHTTP CODE: " + str(e.httpcode))
+                log.error("\nHTTP CODE: " + str(e.httpcode))
                 result = self.failed(binding, e)
         return result
     
